@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Game</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                /* Add background image */
+                background-image: url('https://images.pexels.com/photos/7120352/pexels-photo-7120352.jpeg?auto=compress&cs=tinysrgb&w=600'); /* Replace 'your-background-image.jpg' with the path to your image */
+                background-size: cover; /* This ensures that the background image covers the entire viewport */
+                background-position: center; /* Centers the background image */
+                backdrop-filter: blur(5px);
+                }
+            
+
+            .container {
+                
+                /* border: 2px solid rgb(113, 14, 184); */
+                background-color: rgb(255, 255, 255);
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            }
+
+            h2 {
+                text-align: center;
+                color: #333;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-right: 10px;
+                width: 200px;
+                transition: border-color 0.3s ease;
+            }
+
+            input[type="text"]:focus {
+                outline: none;
+                border-color: #4CAF50;
+            }
+
+            input[type="text"]:hover {
+                border-color: #999; /* Change border color on hover */
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 18px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 0 10px;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            button:focus {
+                outline: none; /* Remove outline on focus */
+            }
+
+            #errorMessage {
+                color: red;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <h2>Game Code</h2>
+        <input type="text" id="codeInput" placeholder="Enter the game code">
+        <button title="Create Game" id="createGame">Create Game</button>
+        <button id="joinGame">Join Game</button>
+        <div id="errorMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('createGame').addEventListener('click', function() {
+            window.location.replace('/white?code=' + document.getElementById('codeInput').value);
+        });
+        document.getElementById('joinGame').addEventListener('click', function() {
+            window.location.replace('/black?code=' + document.getElementById('codeInput').value);
+        });
+
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') == 'invalidCode') {
+            document.getElementById('errorMessage').textContent = 'Invalid invite code';
+        }
+    </script>
+</body>
+</html>

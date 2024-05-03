@@ -1,0 +1,80 @@
+<html>
+    <head>
+          <meta charset="utf-8">
+        </head>{{> head}}
+       
+        <style>
+            /* Add your CSS styles here */
+            body {
+                background-image: url("https://www.shutterstock.com/image-photo/background-floor-pattern-perspective-chess-600nw-481189450.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: flex;
+                font-family: Arial, sans-serif;
+                /* background-color: #f0f0f0; */
+                margin: 0;
+                padding: 0;
+            }
+            
+            #myBoard {
+                border: none;
+                margin: 30px  auto;
+                background-color: #f8f8f8;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .label{
+                color: white;
+                margin-top: 1vw;
+                display: flex;
+                flex-direction: column;
+                margin-right: 5vw;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            label {
+                font-weight: bold;
+                margin-top: 10px;
+                display: block;
+            }
+            
+            #status {
+                margin-top: 5px;
+            }
+            
+            #pgn {
+                width: 10vw;
+                margin-top: 5px;
+                font-family: monospace;
+                white-space: pre-wrap;
+                overflow: auto;
+                max-height: 200px; /* Adjust as needed */
+                border: 1px solid #ccc;
+                padding: 5px;
+                column-count: 2; /* Display PGN text in two columns */
+                column-gap: 20px; /* Adjust the gap between columns */
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div id="myBoard" style="width: 600px"></div>
+        <div class="label">
+            <label>Status:</label>
+            <div id="status"></div>
+            <label>PGN:</label>
+            <div id="pgn"></div>
+        </div>
+
+        <script>
+            let playerColor = '{{color}}';
+            console.log('Playing as ' + playerColor);
+        </script>
+        <script src="/public/js/index.js"></script>
+
+    </body>
+</html>
